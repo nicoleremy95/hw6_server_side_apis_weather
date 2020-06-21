@@ -1,5 +1,4 @@
 
- 
   
   //when the user submits the form 
   $(".searchBtn").click(function (event) {
@@ -38,10 +37,26 @@
       weatherContainer.html(cityDiv);
 
       //display city name 
-      var cityNewName = $("<div>")
-      cityNewName.text(cityNameInput)
-      newCity.prepend(cityNewName)
-      console.log(cityNewName)
+      var newCityName = $("<div>")
+      newCityName.text(cityNameInput)
+      newCity.prepend(newCityName)
+      console.log(newCityName)
+
+      //create object with city names 
+      var newCities = {
+        city: cityNameInput,
+      }
+
+      //if there is a value in the array, then turnm into a string and get item
+      var cityArray = localStorage.getItem("newCityName")?
+      JSON.parse(localStorage.getItem("newCityName")) : [];
+
+      //push object into array 
+      cityArray.push(newCities);
+       
+      //add new city to local storage and turn back into a string 
+      localStorage.setItem("newCityName", JSON.stringify(cityArray))
+
     });
 
   });
