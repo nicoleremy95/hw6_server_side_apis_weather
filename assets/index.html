@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
      <!-- reset css link  -->
-     <!-- <link rel="stylesheet" href="reset.css"> -->
+     <link href="reset.css">
      <!-- bootstrap link -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
      <!-- style css link  -->
@@ -22,20 +22,21 @@
         </nav>
         <div class="container weather-dashboard">
             <div class="row">
-               
                 <div class="col-md-12 center-block" style="text-align:center">
                     <h1>WEATHER DASHBOARD</h1>
                 </div>
-                
             </div>
         </div>
     </header>
     <div>
         <form id="city-search" >
             <label for="city-input">City</label>
-            <input type="text" id="city-input">
+            <input placeholder="type city here" type="text" id="city-input" text = "">
             <button class="searchBtn">SEARCH</button>
         </form>
+    </div>
+    <div id="weather-container">
+
     </div>
 
 <script src="script.js"></script>

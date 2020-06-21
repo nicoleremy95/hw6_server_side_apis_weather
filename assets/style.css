@@ -1,3 +1,6 @@
+body {
+    background-color: #eee;
+}
 h1 {
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -6,4 +9,8 @@ h1 {
     border-width: 5px;
     border-color: blue; */
     margin: 20px;
+}
+
+input[type="image"] {
+    width: fit-content;
 }
