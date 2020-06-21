@@ -25,20 +25,24 @@
       
       var cityDiv = $("<div>")
 
-      var temp = response.main.temp;
+
+      var temp = $("<h3>")
+      temp.text(response.main.temp);
       cityDiv.append(temp);
       console.log(temp)
 
-      var wind = response.wind.speed;
+      var wind = $("<h3>")
+      wind.text(response.wind.speed);
       cityDiv.append(wind)
       console.log(wind)
 
 
-      var humidity = response.main.humidity;
+      var humidity = $("<h3>")
+      humidity.text(response.main.humidity);
       cityDiv.append(humidity)
       console.log(humidity)
 
-      weatherContainer.append(cityDiv)
+      weatherContainer.html(cityDiv);
 
 
     });
