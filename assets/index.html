@@ -29,16 +29,21 @@
         </div>
     </header>
     <div>
-        <form id="city-search" >
-            <label for="city-input">City</label>
-            <input placeholder="type city here" type="text" id="city-input" >
-            <button class="searchBtn">SEARCH</button>
-        </form>
-    <div class="new-city"></div>
-    <div class="weather-container"></div>
-    </div>
-   
-
+        
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form id="city-search" >
+                    <label for="city-input">City</label>
+                    <input placeholder="type city here" type="text" id="city-input" >
+                    <button class="searchBtn">SEARCH</button>
+                </form>
+                <div class="new-city"></div>
+            </div>
+            <div class="col-md-8" >
+                <div class="card weather-container"></div>
+            </div>
+        </div>
     </div>
 
 <script src="script.js"></script>

@@ -10,10 +10,6 @@
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
     var weatherContainer = $(".weather-container");
     var newCity = $(".new-city");
-    // var addNewCity = $("<div>")
-    // var city = cityNameInput.val();
-
-    // addNewCity.prepend()
 
     $.ajax({
       url: queryURL,
@@ -22,29 +18,30 @@
       console.log(queryURL);
       console.log(response);
       
-      
-      var cityDiv = $("<div>")
+      //display city weather info 
+      var cityDiv = $("<div class='city-card'>")
 
+      var cityName = $("<h2>")
+      cityName.text(cityNameInput)
 
       var temp = $("<h3>")
       temp.text(response.main.temp);
-      cityDiv.append(temp);
-      console.log(temp)
 
       var wind = $("<h3>")
       wind.text(response.wind.speed);
-      cityDiv.append(wind)
-      console.log(wind)
-
 
       var humidity = $("<h3>")
       humidity.text(response.main.humidity);
-      cityDiv.append(humidity)
-      console.log(humidity)
 
+      cityDiv.append(cityName,temp,wind,humidity)
+    
       weatherContainer.html(cityDiv);
 
-
+      //display city name 
+      var cityNewName = $("<div>")
+      cityNewName.text(cityNameInput)
+      newCity.prepend(cityNewName)
+      console.log(cityNewName)
     });
 
   });

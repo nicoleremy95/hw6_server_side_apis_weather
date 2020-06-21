@@ -14,3 +14,14 @@ h1 {
 input[type="image"] {
     width: fit-content;
 }
+
+.weather-containter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.city-card{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
