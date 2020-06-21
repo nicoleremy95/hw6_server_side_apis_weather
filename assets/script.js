@@ -1,6 +1,4 @@
-
-  
-  //when the user submits the form 
+//when the user submits the form 
   $(".searchBtn").click(function (event) {
     event.preventDefault();
     
@@ -8,7 +6,7 @@
     var cityNameInput = $("#city-input").val().trim();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
     var weatherContainer = $(".weather-container");
-    var newCity = $(".new-city");
+    var newCity = $(".new-city")
 
     $.ajax({
       url: queryURL,
@@ -24,20 +22,20 @@
       cityName.text(cityNameInput)
 
       var temp = $("<h3>")
-      temp.text(response.main.temp);
+      temp.text("Temperature: " + response.main.temp + "F");
 
       var wind = $("<h3>")
-      wind.text(response.wind.speed);
+      wind.text("Wind Speed: " + response.wind.speed + "MPH");
 
       var humidity = $("<h3>")
-      humidity.text(response.main.humidity);
+      humidity.text("Humidity: " + response.main.humidity + "%");
 
       cityDiv.append(cityName,temp,wind,humidity)
     
       weatherContainer.html(cityDiv);
 
       //display city name 
-      var newCityName = $("<div>")
+      var newCityName = $("<div class='card'>")
       newCityName.text(cityNameInput)
       newCity.prepend(newCityName)
       console.log(newCityName)
