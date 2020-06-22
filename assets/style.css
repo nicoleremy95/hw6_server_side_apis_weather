@@ -20,8 +20,8 @@ input {
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #ffeeda;
-    padding: 5px;
-    margin-top: 5px;
+    padding: 10px;
+    
 }
 
 .city-search{

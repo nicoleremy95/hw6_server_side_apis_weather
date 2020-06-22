@@ -1,3 +1,4 @@
+
 //when the user submits the form 
   $(".searchBtn").click(function (event) {
     event.preventDefault();
@@ -6,7 +7,10 @@
     var cityNameInput = $("#city-input").val().trim();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
     var weatherContainer = $(".weather-container");
+    // var foreCastContainer = $(".fore-cast-container")
     var newCity = $(".new-city")
+
+    
 
     $.ajax({
       url: queryURL,
@@ -17,9 +21,13 @@
       
       //display city weather info 
       var cityDiv = $("<div class='city-search'>")
+      // var foreCast = $("<div class='")
+
+      var now = moment();
+      var nowDisplay = now.format("dddd MMM Mo YYYY");
 
       var cityName = $("<h2>")
-      cityName.text(cityNameInput)
+      cityName.text(cityNameInput + " " + nowDisplay )
 
       var temp = $("<h3>")
       temp.text("Temperature: " + response.main.temp + " F");
