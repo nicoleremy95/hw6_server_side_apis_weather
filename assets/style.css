@@ -11,6 +11,10 @@ h2{
     font-size: 40px;
 }
 
+h3{
+    font-size: 20px;
+}
+
 input {
     width: 70%;
     padding:10px;

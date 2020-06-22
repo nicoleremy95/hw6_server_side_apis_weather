@@ -32,19 +32,32 @@ function makeRequestCurrent(){
       var humidity = $("<h3>")
       humidity.text("Humidity: " + response.main.humidity + " %");
 
-      var icon = $("<img>")
+      var iconImage = $("<img>")
       var iconCode = response.weather[0].icon
       console.log(iconCode);
       var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
-      icon.attr("scr", iconUrl)
+      console.log(iconUrl);
+      iconImage.attr("src", iconUrl)
 
-      cityDiv.append(nowDisplay,cityName,temp,wind,humidity,icon)
+      //var lat = response.cord.lat
+      //var lon = response.cord.lon
+      //   var uvIndexURL= "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
+      //   var currentUvIndex = 
+      // }
+
+      cityDiv.append(nowDisplay,cityName,temp,wind,humidity,iconImage)
     
       weatherContainer.html(cityDiv); 
-      
-      // if statement for icon severity 
     });
 }
+
+
+
+
+// TODO:to creat the uv function, i will need to grab the lattitude and longitude from the make request function
+// function uvIndex(){
+
+
 
 function makeRequestForecast(){
   var cityNameInput = $("#city-input").val().trim();
