@@ -16,26 +16,26 @@
       console.log(response);
       
       //display city weather info 
-      var cityDiv = $("<div class='city-card'>")
+      var cityDiv = $("<div class='city-search'>")
 
       var cityName = $("<h2>")
       cityName.text(cityNameInput)
 
       var temp = $("<h3>")
-      temp.text("Temperature: " + response.main.temp + "F");
+      temp.text("Temperature: " + response.main.temp + " F");
 
       var wind = $("<h3>")
-      wind.text("Wind Speed: " + response.wind.speed + "MPH");
+      wind.text("Wind Speed: " + response.wind.speed + " MPH");
 
       var humidity = $("<h3>")
-      humidity.text("Humidity: " + response.main.humidity + "%");
+      humidity.text("Humidity: " + response.main.humidity + " %");
 
       cityDiv.append(cityName,temp,wind,humidity)
     
       weatherContainer.html(cityDiv);
 
       //display city name 
-      var newCityName = $("<div class='card'>")
+      var newCityName = $("<div class='card city-list'>")
       newCityName.text(cityNameInput)
       newCity.prepend(newCityName)
       console.log(newCityName)
