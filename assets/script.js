@@ -20,8 +20,18 @@ function makeRequestCurrent(){
       var now = moment();
       var nowDisplay = now.format("dddd MMM Mo YYYY");
 
+     
+
       var cityName = $("<h2>")
-      cityName.text(cityNameInput)
+      cityName.text(response.name)
+
+      var iconImage = $("<img>")
+      var iconCode = response.weather[0].icon
+      console.log(iconCode);
+      var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
+      console.log(iconUrl);
+      iconImage.attr("src", iconUrl)
+      cityName.append(iconImage)
 
       var temp = $("<h3>")
       temp.text("Temperature: " + response.main.temp + " F");
@@ -32,20 +42,29 @@ function makeRequestCurrent(){
       var humidity = $("<h3>")
       humidity.text("Humidity: " + response.main.humidity + " %");
 
-      var iconImage = $("<img>")
-      var iconCode = response.weather[0].icon
-      console.log(iconCode);
-      var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
-      console.log(iconUrl);
-      iconImage.attr("src", iconUrl)
+      
 
-      //var lat = response.cord.lat
-      //var lon = response.cord.lon
-      //   var uvIndexURL= "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
-      //   var currentUvIndex = 
-      // }
+      var uvIndex = $("<h3>")
+      var lat = response.coord.lat
+      var lon = response.coord.lon
+      var uvIndexURL= "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
+      console.log(uvIndexURL)
+      $.ajax({
+        url: uvIndexURL,
+        method: "GET"
+      }).then(function(response2){
+        console.log(response2)
+        var cityUvIndex = $("<div>")
+        
+        cityUvIndex.text(response2.value)
+        console.log(cityUvIndex)
+      })
 
-      cityDiv.append(nowDisplay,cityName,temp,wind,humidity,iconImage)
+      // cityIndex.text(uvIndexURL.value)
+      // uvIndex.text(cityIndex)
+      
+
+      cityDiv.append(nowDisplay,cityName,temp,wind,humidity,cityUvIndex)
     
       weatherContainer.html(cityDiv); 
     });
