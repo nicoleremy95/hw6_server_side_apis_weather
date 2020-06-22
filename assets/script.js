@@ -53,12 +53,25 @@ function makeRequestCurrent(){
       }).then(function(response2){
         console.log(response2)
         var cityUvIndex = $("<h3>")
-        cityUvIndex.text(response2.value)
-        console.log(response2.value)
-        console.log(cityUvIndex)
+        cityUvIndex.text("UV Index: " + response2.value)
+       
+        if (cityUvIndex < 3.00){
+          console.log("low")
+          cityUvIndex.addClass("low")
+        }
+        else if (cityUvIndex > 8.00){
+          console.log("severe")
+          cityUvIndex.addClass("severe")
+        } 
+        else {
+          console.log("moderate")
+          cityUvIndex.addClass("moderate")
+        }
+        weatherContainer.append(cityUvIndex)
+        
       })
 
-      cityDiv.append(nowDisplay,cityName,temp,wind,humidity,cityUvIndex)
+      cityDiv.append(nowDisplay,cityName,temp,wind,humidity)
     
       weatherContainer.html(cityDiv); 
     });
