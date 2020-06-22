@@ -3,9 +3,9 @@ var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
   
 function makeRequestCurrent(){
     
-    var cityNameInput = $("#city-input").val().trim();
-    var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
-    var weatherContainer = $(".weather-container");
+  var cityNameInput = $("#city-input").val().trim();
+  var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
+  var weatherContainer = $(".weather-container");
     
     //request informatiom 
     $.ajax({
@@ -32,9 +32,14 @@ function makeRequestCurrent(){
       var humidity = $("<h3>")
       humidity.text("Humidity: " + response.main.humidity + " %");
 
-      cityDiv.append(nowDisplay,cityName,temp,wind,humidity)
+      var icon = $("<img>")
+      icon.attr("scr", response.weather[0])
+
+      cityDiv.append(nowDisplay,cityName,temp,wind,humidity,icon)
     
-      weatherContainer.html(cityDiv);   
+      weatherContainer.html(cityDiv); 
+      
+      // if statement for icon severity 
     });
 }
 
