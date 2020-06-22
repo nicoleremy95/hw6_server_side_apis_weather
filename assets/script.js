@@ -1,8 +1,8 @@
-
+var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
 //when the user submits the form 
   
 function makeRequestCurrent(){
-    var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
+    
     var cityNameInput = $("#city-input").val().trim();
     var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
     var weatherContainer = $(".weather-container");
@@ -16,8 +16,6 @@ function makeRequestCurrent(){
       console.log(response);
       
       var cityDiv = $("<div>")
-      
-      
 
       var now = moment();
       var nowDisplay = now.format("dddd MMM Mo YYYY");
@@ -36,20 +34,25 @@ function makeRequestCurrent(){
 
       cityDiv.append(nowDisplay,cityName,temp,wind,humidity)
     
-      weatherContainer.html(cityDiv);
-     
-      
+      weatherContainer.html(cityDiv);   
     });
 }
 
 function makeRequestForecast(){
+  var cityNameInput = $("#city-input").val().trim();
   var foreCastContainer = $(".fore-cast-container")
-  
-  var foreCast = $("<h2>");
-  foreCast.text("Forecast");
-  
-  foreCastContainer.html(foreCast)
+  var forecastQueryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`;
+  console.log(forecastQueryURL);
 
+  $.ajax({
+    url: forecastQueryURL,
+    method: "GET"
+  }).then(function(response){
+    console.log(response);
+    var foreCast = $("<h2>");
+    foreCast.text("Forecast");
+    foreCastContainer.html(foreCast)
+  })
 }
 
 function cityNames(){
@@ -77,22 +80,12 @@ function cityNames(){
   localStorage.setItem("newCityName", JSON.stringify(cityArray))
 }
 
-
-
 $(".searchBtn").click(function (event) {
   event.preventDefault();
   makeRequestCurrent();
   makeRequestForecast();
   cityNames();
-  
-
+  $("#city-input").val("");
 });
-    // var futureQueryURL = 
-    // $.ajax({
-    //   url: futureQueryURL,
-    //   method: "GET"
-    // }).then(function (response) {
-    //   console.log(queryURL);
-    //   console.log(response);
-    // // var foreCast = $("<div class='")
+ 
 
