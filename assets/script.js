@@ -20,8 +20,6 @@ function makeRequestCurrent(){
       var now = moment();
       var nowDisplay = now.format("dddd MMM Mo YYYY");
 
-     
-
       var cityName = $("<h2>")
       cityName.text(response.name)
 
@@ -44,7 +42,7 @@ function makeRequestCurrent(){
 
       
 
-      var uvIndex = $("<h3>")
+     
       var lat = response.coord.lat
       var lon = response.coord.lon
       var uvIndexURL= "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
@@ -54,15 +52,11 @@ function makeRequestCurrent(){
         method: "GET"
       }).then(function(response2){
         console.log(response2)
-        var cityUvIndex = $("<div>")
-        
+        var cityUvIndex = $("<h3>")
         cityUvIndex.text(response2.value)
+        console.log(response2.value)
         console.log(cityUvIndex)
       })
-
-      // cityIndex.text(uvIndexURL.value)
-      // uvIndex.text(cityIndex)
-      
 
       cityDiv.append(nowDisplay,cityName,temp,wind,humidity,cityUvIndex)
     
@@ -73,8 +67,7 @@ function makeRequestCurrent(){
 
 
 
-// TODO:to creat the uv function, i will need to grab the lattitude and longitude from the make request function
-// function uvIndex(){
+
 
 
 
