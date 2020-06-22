@@ -4,40 +4,42 @@ body {
 h1 {
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
-   
     margin: 50px; 
+}
+
+h2{
+    font-size: 40px;
 }
 
 input {
     width: 70%;
     padding:10px;
-    
 }
 
 .weather-containter {
+   
+    background-color: #ffeeda;
+    padding: 20px;
+    margin: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: #ffeeda;
-    padding: 10px;
-    
 }
 
-.city-search{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: white;
+.fore-cast-container {
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.city-list {
+    padding:5px;
+    margin-top: 5px;
+    background-color: #feddb6;
 }
 
 .btn {
     margin-left: 5px;
-}
-
-.city-list{
-    padding:5px;
-    margin-top: 5px;
-    background-color: #feddb6;
 }
 
 #city-search{

@@ -5,29 +5,29 @@
     
     var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
     var cityNameInput = $("#city-input").val().trim();
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
+    var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
     var weatherContainer = $(".weather-container");
-    // var foreCastContainer = $(".fore-cast-container")
+    var foreCastContainer = $(".fore-cast-container")
     var newCity = $(".new-city")
 
-    
-
+    //request informatiom 
     $.ajax({
-      url: queryURL,
+      url: currentQueryURL,
       method: "GET"
     }).then(function (response) {
-      console.log(queryURL);
+      console.log(currentQueryURL);
       console.log(response);
       
-      //display city weather info 
-      var cityDiv = $("<div class='city-search'>")
-      // var foreCast = $("<div class='")
+      var cityDiv = $("<div>")
+      
+      var foreCast = $("<h2>")
+      foreCast.text("Forecast")
 
       var now = moment();
       var nowDisplay = now.format("dddd MMM Mo YYYY");
 
       var cityName = $("<h2>")
-      cityName.text(cityNameInput + " " + nowDisplay )
+      cityName.text(cityNameInput)
 
       var temp = $("<h3>")
       temp.text("Temperature: " + response.main.temp + " F");
@@ -38,9 +38,10 @@
       var humidity = $("<h3>")
       humidity.text("Humidity: " + response.main.humidity + " %");
 
-      cityDiv.append(cityName,temp,wind,humidity)
+      cityDiv.append(nowDisplay,cityName,temp,wind,humidity)
     
       weatherContainer.html(cityDiv);
+      foreCastContainer.html(foreCast)
 
       //display city name 
       var newCityName = $("<div class='card city-list'>")
@@ -64,7 +65,13 @@
       localStorage.setItem("newCityName", JSON.stringify(cityArray))
 
     });
-
   });
-
+    // var futureQueryURL = 
+    // $.ajax({
+    //   url: futureQueryURL,
+    //   method: "GET"
+    // }).then(function (response) {
+    //   console.log(queryURL);
+    //   console.log(response);
+    // // var foreCast = $("<div class='")
 
