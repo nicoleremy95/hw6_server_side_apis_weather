@@ -33,7 +33,10 @@ function makeRequestCurrent(){
       humidity.text("Humidity: " + response.main.humidity + " %");
 
       var icon = $("<img>")
-      icon.attr("scr", response.weather[0])
+      var iconCode = response.weather[0].icon
+      console.log(iconCode);
+      var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
+      icon.attr("scr", iconUrl)
 
       cityDiv.append(nowDisplay,cityName,temp,wind,humidity,icon)
     
