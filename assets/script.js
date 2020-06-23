@@ -85,13 +85,16 @@ function makeRequestForecast(){
     method: "GET"
   }).then(function(response2){
     console.log(response2);
-    var forecastDay1 = $("<div>")
 
-    var foreCast = $("<h2>");
+    var cardDiv = $("<div>")
+
+    var forecastDay1 = $("<div class = 'card'>")
+
+    var foreCast = $("<h3>");
     foreCast.text("Forecast");
     
     var dateDay1 = $("<h3>")
-    dateDay1.text(response2.list[7].dt_text)
+    dateDay1.val(response2.list[7].dt_text)
     console.log(response2.list[7].dt_text)
 
     var tempDay1 = $("<h3>")
@@ -105,9 +108,9 @@ function makeRequestForecast(){
     forecastDay1.append(foreCast, dateDay1, tempDay1, humidityDay1)
 
 
-    var forecastDay2 = $("<div>")
+    var forecastDay2 = $("<div class = 'card'>")
 
-    var foreCast2 = $("<h2>");
+    var foreCast2 = $("<h3>");
     foreCast2.text("Forecast");
     
     var dateDay2 = $("<h3>")
@@ -125,11 +128,76 @@ function makeRequestForecast(){
     forecastDay2.append(foreCast2, dateDay2, tempDay2, humidityDay2)
 
 
+    var forecastDay3 = $("<div class = 'card'>")
 
-    forecastDay1.append(forecastDay2);
+    var foreCast3 = $("<h3>");
+    foreCast3.text("Forecast");
+    
+    var dateDay3 = $("<h3>")
+    dateDay3.text(response2.list[23].dt_text)
+    console.log(response2.list[23].dt_text)
 
-    foreCastContainer.html(forecastDay1)
+    var tempDay3 = $("<h3>")
+    tempDay3.text("Temperature: " + response2.list[23].main.temp + " F")
+    console.log(response2.list[23].main.temp)
+
+    var humidityDay3= $("<h3>")
+    humidityDay3.text("Humidity: " + response2.list[23].main.humidity + " %")
+    console.log(response2.list[23].main.humidity)
+
+    forecastDay3.append(foreCast3, dateDay3, tempDay3, humidityDay3)
+
+    cardDiv.append(forecastDay1, forecastDay2, forecastDay3);
+
+    foreCastContainer.html(cardDiv)
    
+
+    var forecastDay4 = $("<div class = 'card'>")
+
+    var foreCast4 = $("<h3>");
+    foreCast4.text("Forecast");
+    
+    var dateDay4 = $("<h3>")
+    dateDay4.text(response2.list[31].dt_text)
+    console.log(response2.list[31].dt_text)
+
+    var tempDay4 = $("<h3>")
+    tempDay4.text("Temperature: " + response2.list[31].main.temp + " F")
+    console.log(response2.list[31].main.temp)
+
+    var humidityDay4= $("<h3>")
+    humidityDay4.text("Humidity: " + response2.list[31].main.humidity + " %")
+    console.log(response2.list[31].main.humidity)
+
+    forecastDay4.append(foreCast4, dateDay4, tempDay4, humidityDay4)
+
+
+    var forecastDay5 = $("<div class = 'card'>")
+
+    var foreCast5 = $("<h3>");
+    foreCast5.text("Forecast");
+    
+    var dateDay5 = $("<h3>")
+    dateDay5.text(response2.list[39].dt_text)
+    console.log(response2.list[39].dt_text)
+
+    var tempDay5 = $("<h3>")
+    tempDay5.text("Temperature: " + response2.list[39].main.temp + " F")
+    console.log(response2.list[39].main.temp)
+
+    var humidityDay5= $("<h3>")
+    humidityDay5.text("Humidity: " + response2.list[39].main.humidity + " %")
+    console.log(response2.list[39].main.humidity)
+
+    forecastDay5.append(foreCast5, dateDay5, tempDay5, humidityDay5)
+
+
+    cardDiv.append(forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5);
+
+    foreCastContainer.html(cardDiv)
+
+
+
   })
 }
 
