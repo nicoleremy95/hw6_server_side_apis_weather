@@ -267,16 +267,9 @@ $(".searchBtn").click(function (event) {
 // TODO: upon the click of a city, it displays the same information again
 //create the card city-list into buttons and add a data-nanme attr to each. Then use the $(.this) like an event target 
 $(document).on("click", ".city-list", makeRequestCurrent, makeRequestForecast)
-//   //display city name 
-//   var newCityName = $("<button class='card city-list'>")
-//   newCityName.text(cityNameInput)
- 
-//   var cityNameInput = $(this).text(cityNameInput)
-  
-//   console.log(cityNameInput)
-//   // console.log(seeAgain);
-//   // makeRequestCurrent(seeAgain);
-//   // makeRequestForecast(seeAgain);
-//   $("#city-input").val();
 
- 
+$(".city-list").click(function(){
+
+  makeRequestCurrent();
+  makeRequestForecast();
+})
