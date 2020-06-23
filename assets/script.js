@@ -13,17 +13,12 @@ function onPageLoad (){
       newCityName.attr("data-name", cityNameNew.city)
       newCity.prepend(newCityName)
     }
-    // var cityNameInput = $("#city-input").val().trim();
-    
- 
-    
-    console.log(newCityName);
-    
-    console.log("data-name", cityNameInput)
+   
     
   }
 }
 onPageLoad(); 
+
 function makeRequestCurrent(){
   var cityNameInput = $("#city-input").val().trim();
 
@@ -102,26 +97,23 @@ function makeRequestForecast(){
   }).then(function(response2){
     console.log(response2);
 
-    var cardDiv = $("<div>")
+    var cardDiv = $("<div class= 'row' >")
 
     var forecastDay1 = $("<div class = 'card'>")
 
-    var foreCast = $("<h3>");
-    foreCast.text("Forecast");
+    var foreCast1 = $("<h3>");
+    foreCast1.text("Forecast");
     
     var dateDay1 = $("<h3>")
-    dateDay1.val(response2.list[7].dt_text)
-    console.log(response2.list[7].dt_text)
+    dateDay1.val(response2.list[7].dt_txt)
 
     var tempDay1 = $("<h3>")
     tempDay1.text("Temperature: " + response2.list[7].main.temp + " F")
-    console.log(response2.list[7].main.temp)
 
     var humidityDay1= $("<h3>")
     humidityDay1.text("Humidity: " + response2.list[7].main.humidity + " %")
-    console.log(response2.list[7].main.humidity)
 
-    forecastDay1.append(foreCast, dateDay1, tempDay1, humidityDay1)
+    forecastDay1.append(foreCast1, dateDay1, tempDay1, humidityDay1)
 
 
     var forecastDay2 = $("<div class = 'card'>")
@@ -130,16 +122,13 @@ function makeRequestForecast(){
     foreCast2.text("Forecast");
     
     var dateDay2 = $("<h3>")
-    dateDay2.text(response2.list[15].dt_text)
-    console.log(response2.list[15].dt_text)
+    dateDay2.text(response2.list[15].dt_txt)
 
     var tempDay2 = $("<h3>")
     tempDay2.text("Temperature: " + response2.list[15].main.temp + " F")
-    console.log(response2.list[15].main.temp)
 
     var humidityDay2= $("<h3>")
     humidityDay2.text("Humidity: " + response2.list[15].main.humidity + " %")
-    console.log(response2.list[15].main.humidity)
 
     forecastDay2.append(foreCast2, dateDay2, tempDay2, humidityDay2)
 
@@ -150,16 +139,14 @@ function makeRequestForecast(){
     foreCast3.text("Forecast");
     
     var dateDay3 = $("<h3>")
-    dateDay3.text(response2.list[23].dt_text)
-    console.log(response2.list[23].dt_text)
+    dateDay3.text(response2.list[23].dt_txt)
+    console.log(response2.list[23].dt_txt)
 
     var tempDay3 = $("<h3>")
     tempDay3.text("Temperature: " + response2.list[23].main.temp + " F")
-    console.log(response2.list[23].main.temp)
 
     var humidityDay3= $("<h3>")
     humidityDay3.text("Humidity: " + response2.list[23].main.humidity + " %")
-    console.log(response2.list[23].main.humidity)
 
     forecastDay3.append(foreCast3, dateDay3, tempDay3, humidityDay3)
 
@@ -174,16 +161,14 @@ function makeRequestForecast(){
     foreCast4.text("Forecast");
     
     var dateDay4 = $("<h3>")
-    dateDay4.text(response2.list[31].dt_text)
-    console.log(response2.list[31].dt_text)
+    dateDay4.text(response2.list[31].dt_txt)
+    console.log(response2.list[31].dt_txt)
 
     var tempDay4 = $("<h3>")
     tempDay4.text("Temperature: " + response2.list[31].main.temp + " F")
-    console.log(response2.list[31].main.temp)
 
     var humidityDay4= $("<h3>")
     humidityDay4.text("Humidity: " + response2.list[31].main.humidity + " %")
-    console.log(response2.list[31].main.humidity)
 
     forecastDay4.append(foreCast4, dateDay4, tempDay4, humidityDay4)
 
@@ -194,16 +179,14 @@ function makeRequestForecast(){
     foreCast5.text("Forecast");
     
     var dateDay5 = $("<h3>")
-    dateDay5.text(response2.list[39].dt_text)
-    console.log(response2.list[39].dt_text)
+    dateDay5.text(response2.list[39].dt_txt)
+    console.log(response2.list[39].dt_txt)
 
     var tempDay5 = $("<h3>")
     tempDay5.text("Temperature: " + response2.list[39].main.temp + " F")
-    console.log(response2.list[39].main.temp)
 
     var humidityDay5= $("<h3>")
     humidityDay5.text("Humidity: " + response2.list[39].main.humidity + " %")
-    console.log(response2.list[39].main.humidity)
 
     forecastDay5.append(foreCast5, dateDay5, tempDay5, humidityDay5)
 
