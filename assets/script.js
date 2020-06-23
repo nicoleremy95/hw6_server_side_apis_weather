@@ -40,9 +40,6 @@ function makeRequestCurrent(){
       var humidity = $("<h3>")
       humidity.text("Humidity: " + response.main.humidity + " %");
 
-      
-
-     
       var lat = response.coord.lat
       var lon = response.coord.lon
       var uvIndexURL= "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
@@ -77,13 +74,6 @@ function makeRequestCurrent(){
     });
 }
 
-
-
-
-
-
-
-
 function makeRequestForecast(){
   var cityNameInput = $("#city-input").val().trim();
   var foreCastContainer = $(".fore-cast-container")
@@ -95,9 +85,13 @@ function makeRequestForecast(){
     method: "GET"
   }).then(function(response){
     console.log(response);
+
     var foreCast = $("<h2>");
     foreCast.text("Forecast");
     foreCastContainer.html(foreCast)
+
+    var date = $("<h3>")
+    date.text(response.)
   })
 }
 
