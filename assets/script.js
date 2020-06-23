@@ -56,14 +56,15 @@ function makeRequestCurrent(){
       }).then(function(response2){
         console.log(response2)
         var cityUvIndex = $("<h3>")
-        cityUvIndex.text("UV Index: " + response2.value)
+        var uvIndex = response2.value
+        cityUvIndex.text("UV Index: " + uvIndex)
         console.log(response2.value)
        
-        if ( cityUvIndex > 0.00 && cityUvIndex < 3.00){
+        if (uvIndex > 0.00 && uvIndex < 3.00){
           console.log("low")
           cityUvIndex.addClass("low")
         }
-        else if (cityUvIndex > 8.00){
+        else if (uvIndex > 8.00){
           console.log("severe")
           cityUvIndex.addClass("severe")
         } 
@@ -72,7 +73,6 @@ function makeRequestCurrent(){
           cityUvIndex.addClass("moderate")
         }
         weatherContainer.append(cityUvIndex)
-        
       })
 
       cityDiv.append(nowDisplay,cityName,temp,wind,humidity)
@@ -140,11 +140,13 @@ $(".searchBtn").click(function (event) {
 
 // TODO: upon the click of a city, it displays the same information again
 //create the card city-list into buttons and add a data-nanme attr to each. Then use the $(.this) like an event target 
-// $("button class='card city-list'").click(function(){
-//   console.log("hi")
-//   var seeAgain = $(this).attr("data-name")
-//   makeRequestCurrent(seeAgain);
-//   makeRequestForecast(seeAgain);
-//   $("#city-input").val();
-// })
+$("<button class='card city-list'>").click(function(event){
+  event.preventDefault();
+  console.log("hi")
+  var seeAgain = $(this).attr("data-name")
+  console.log(seeAgain);
+  makeRequestCurrent(seeAgain);
+  makeRequestForecast(seeAgain);
+  $("#city-input").val();
+})
  
