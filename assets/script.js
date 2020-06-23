@@ -96,13 +96,21 @@ function makeRequestForecast(){
     method: "GET"
   }).then(function(response2){
     console.log(response2);
-
+    
     var cardDiv = $("<div class= 'row' >")
 
-    var forecastDay1 = $("<div class = 'card'>")
+    //day 1
+    var forecastDay1 = $("<div class = 'card forecast'>")
 
     var foreCast1 = $("<h3>");
     foreCast1.text("Forecast");
+
+    var iconImageDay1 = $("<img>")
+    var iconCodeDay1 = response2.list[7].weather[0].icon
+    console.log(iconCodeDay1)
+    var iconUrlForecast1 = "http://openweathermap.org/img/w/" + iconCodeDay1 + ".png"
+    iconImageDay1.attr("src", iconUrlForecast1)
+    foreCast1.append(iconImageDay1)
     
     var dateDay1 = $("<h3>")
     dateDay1.val(response2.list[7].dt_txt)
@@ -115,11 +123,17 @@ function makeRequestForecast(){
 
     forecastDay1.append(foreCast1, dateDay1, tempDay1, humidityDay1)
 
-
-    var forecastDay2 = $("<div class = 'card'>")
+    //day 2
+    var forecastDay2 = $("<div class = 'card forecast'>")
 
     var foreCast2 = $("<h3>");
     foreCast2.text("Forecast");
+
+    var iconImageDay2 = $("<img>")
+    var iconCodeDay2 = response2.list[15].weather[0].icon
+    var iconUrlForecast2 = "http://openweathermap.org/img/w/" + iconCodeDay2 + ".png"
+    iconImageDay2.attr("src", iconUrlForecast2)
+    foreCast2.append(iconImageDay2)
     
     var dateDay2 = $("<h3>")
     dateDay2.text(response2.list[15].dt_txt)
@@ -132,15 +146,20 @@ function makeRequestForecast(){
 
     forecastDay2.append(foreCast2, dateDay2, tempDay2, humidityDay2)
 
-
-    var forecastDay3 = $("<div class = 'card'>")
+    //day 3
+    var forecastDay3 = $("<div class = 'card forecast'>")
 
     var foreCast3 = $("<h3>");
     foreCast3.text("Forecast");
+
+    var iconImageDay3 = $("<img>")
+    var iconCodeDay3 = response2.list[23].weather[0].icon
+    var iconUrlForecast3 = "http://openweathermap.org/img/w/" + iconCodeDay3 + ".png"
+    iconImageDay3.attr("src", iconUrlForecast3)
+    foreCast3.append(iconImageDay3)
     
     var dateDay3 = $("<h3>")
     dateDay3.text(response2.list[23].dt_txt)
-    console.log(response2.list[23].dt_txt)
 
     var tempDay3 = $("<h3>")
     tempDay3.text("Temperature: " + response2.list[23].main.temp + " F")
@@ -154,15 +173,20 @@ function makeRequestForecast(){
 
     foreCastContainer.html(cardDiv)
    
-
-    var forecastDay4 = $("<div class = 'card'>")
+    //day 4
+    var forecastDay4 = $("<div class = 'card forecast'>")
 
     var foreCast4 = $("<h3>");
     foreCast4.text("Forecast");
+
+    var iconImageDay4 = $("<img>")
+    var iconCodeDay4 = response2.list[31].weather[0].icon
+    var iconUrlForecast4 = "http://openweathermap.org/img/w/" + iconCodeDay4 + ".png"
+    iconImageDay4.attr("src", iconUrlForecast4)
+    foreCast4.append(iconImageDay4)
     
     var dateDay4 = $("<h3>")
     dateDay4.text(response2.list[31].dt_txt)
-    console.log(response2.list[31].dt_txt)
 
     var tempDay4 = $("<h3>")
     tempDay4.text("Temperature: " + response2.list[31].main.temp + " F")
@@ -172,15 +196,20 @@ function makeRequestForecast(){
 
     forecastDay4.append(foreCast4, dateDay4, tempDay4, humidityDay4)
 
-
-    var forecastDay5 = $("<div class = 'card'>")
+    //day 5
+    var forecastDay5 = $("<div class = 'card forecast'>")
 
     var foreCast5 = $("<h3>");
     foreCast5.text("Forecast");
+
+    var iconImageDay5 = $("<img>")
+    var iconCodeDay5 = response2.list[39].weather[0].icon
+    var iconUrlForecast5 = "http://openweathermap.org/img/w/" + iconCodeDay5 + ".png"
+    iconImageDay5.attr("src", iconUrlForecast5)
+    foreCast5.append(iconImageDay5)
     
     var dateDay5 = $("<h3>")
     dateDay5.text(response2.list[39].dt_txt)
-    console.log(response2.list[39].dt_txt)
 
     var tempDay5 = $("<h3>")
     tempDay5.text("Temperature: " + response2.list[39].main.temp + " F")
@@ -201,7 +230,7 @@ function cityNames(){
   var cityNameInput = $("#city-input").val().trim();
   
   //display city name 
-  var newCityName = $("<button class='card city-list'>")
+  var newCityName = $("<button class='card city-list btn'>")
  
   newCityName.text(cityNameInput)
   console.log(newCityName);
@@ -237,7 +266,7 @@ $(".searchBtn").click(function (event) {
 
 // TODO: upon the click of a city, it displays the same information again
 //create the card city-list into buttons and add a data-nanme attr to each. Then use the $(.this) like an event target 
-// $(document).on("click", ".city-list", makeRequestCurrent, makeRequestForecast)
+$(document).on("click", ".city-list", makeRequestCurrent, makeRequestForecast)
 //   //display city name 
 //   var newCityName = $("<button class='card city-list'>")
 //   newCityName.text(cityNameInput)

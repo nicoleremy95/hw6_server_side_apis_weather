@@ -1,6 +1,4 @@
-body {
-    background-color: #fff7ed;
-}
+
 h1 {
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -20,30 +18,23 @@ input {
     padding:10px;
 }
 
-/* .weather-containter {
-   
-    background-color: #ffeeda;
-    padding: 20px;
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
+.forecast {
+    background-color: #152238;
+    color: white;
 }
-
-.fore-cast-container {
-    padding: 20px;
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-} */
 
 .city-list {
     padding:5px;
     margin-top: 5px;
-    background-color: #feddb6;
+    
 }
 
 .btn {
     margin-left: 5px;
+}
+
+.btn:hover{
+    background-color: lightgray;
 }
 
 .low {
@@ -63,11 +54,10 @@ input {
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #ffeeda;
+    
 }
 #city-search{
     padding: 10px;
-    background-color:#fecc91;
     border-radius: 10px;
     border-style: solid;
     border-width: 2px;
