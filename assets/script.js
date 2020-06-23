@@ -1,4 +1,8 @@
 var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
+var storedCity = JSON.parse(localStorage.getItem("newCityName"));
+if (storedCity !=null){
+  $(".new-city").val(storedCity);
+}
 //when the user submits the form 
   
 function makeRequestCurrent(){
@@ -90,8 +94,8 @@ function makeRequestForecast(){
     foreCast.text("Forecast");
     foreCastContainer.html(foreCast)
 
-    var date = $("<h3>")
-    date.text(response.)
+    // var date = $("<h3>")
+    // date.text(response.)
   })
 }
 
@@ -109,9 +113,9 @@ function cityNames(){
     city: cityNameInput,
   }
 
-  //if there is a value in the array, then turnm into a string and get item
+  //if there is a value in the array, then turnm into an object and get item
   var cityArray = localStorage.getItem("newCityName")?
-  JSON.parse(localStorage.getItem("newCityName")) : [];
+  JSON.parse(window.localStorage.getItem("newCityName")) : [];
 
   //push object into array 
   cityArray.push(newCities);
