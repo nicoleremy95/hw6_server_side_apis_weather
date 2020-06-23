@@ -1,13 +1,29 @@
 var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
-
-var storedCity = JSON.parse(localStorage.getItem("newCityName"));
 var newCity = $(".new-city") 
 
 
-if (storedCity !=null){
-  $("#city-search").val(storedCity);
+
+function onPageLoad (){
+  var storedCity = JSON.parse(localStorage.getItem("newCityName"));
+  if (storedCity !=null){
+    // $("#city-search").val(storedCity);
+    for (var cityNameNew of storedCity){
+      var newCityName = $("<button class='card city-list'>")
+      newCityName.text(cityNameNew.city)
+      newCityName.attr("data-name", cityNameNew.city)
+      newCity.prepend(newCityName)
+    }
+    // var cityNameInput = $("#city-input").val().trim();
+    
+ 
+    
+    console.log(newCityName);
+    
+    console.log("data-name", cityNameInput)
+    
+  }
 }
-  
+onPageLoad(); 
 function makeRequestCurrent(){
   var cityNameInput = $("#city-input").val().trim();
 
@@ -195,9 +211,6 @@ function makeRequestForecast(){
     cardDiv.append(forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5);
 
     foreCastContainer.html(cardDiv)
-
-
-
   })
 }
 
