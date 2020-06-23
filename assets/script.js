@@ -1,9 +1,11 @@
 var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
+
 var storedCity = JSON.parse(localStorage.getItem("newCityName"));
+var newCity = $(".new-city") 
+
 if (storedCity !=null){
-  $(".new-city").val(storedCity);
+  $("#city-search").val(storedCity);
 }
-//when the user submits the form 
   
 function makeRequestCurrent(){
     
@@ -55,8 +57,9 @@ function makeRequestCurrent(){
         console.log(response2)
         var cityUvIndex = $("<h3>")
         cityUvIndex.text("UV Index: " + response2.value)
+        console.log(response2.value)
        
-        if (cityUvIndex < 3.00){
+        if ( cityUvIndex > 0.00 && cityUvIndex < 3.00){
           console.log("low")
           cityUvIndex.addClass("low")
         }
@@ -103,8 +106,9 @@ function cityNames(){
   var cityNameInput = $("#city-input").val().trim();
   var newCity = $(".new-city")
   //display city name 
-  var newCityName = $("<div class='card city-list'>")
+  var newCityName = $("<button class='card city-list'>")
   newCityName.text(cityNameInput)
+  newCityName.attr("data-name", cityNameInput)
   newCity.prepend(newCityName)
   console.log(newCityName)
 
@@ -124,6 +128,7 @@ function cityNames(){
   localStorage.setItem("newCityName", JSON.stringify(cityArray))
 }
 
+
 $(".searchBtn").click(function (event) {
   event.preventDefault();
   makeRequestCurrent();
@@ -131,5 +136,15 @@ $(".searchBtn").click(function (event) {
   cityNames();
   $("#city-input").val("");
 });
- 
 
+
+// TODO: upon the click of a city, it displays the same information again
+//create the card city-list into buttons and add a data-nanme attr to each. Then use the $(.this) like an event target 
+// $("button class='card city-list'").click(function(){
+//   console.log("hi")
+//   var seeAgain = $(this).attr("data-name")
+//   makeRequestCurrent(seeAgain);
+//   makeRequestForecast(seeAgain);
+//   $("#city-input").val();
+// })
+ 
