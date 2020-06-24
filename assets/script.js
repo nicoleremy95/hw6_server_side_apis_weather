@@ -1,8 +1,6 @@
 var apiKey = "9fa65c8a19cf2131654f1622f89351d4";
 var newCity = $(".new-city") 
 
-
-
 function onPageLoad (){
   var storedCity = JSON.parse(localStorage.getItem("newCityName"));
   if (storedCity !=null){
@@ -12,9 +10,7 @@ function onPageLoad (){
       newCityName.text(cityNameNew.city)
       newCityName.attr("data-name", cityNameNew.city)
       newCity.prepend(newCityName)
-    }
-   
-    
+    } 
   }
 }
 onPageLoad(); 
@@ -98,9 +94,8 @@ function makeRequestForecast(){
     method: "GET"
   }).then(function(response2){
     console.log(response2);
-    
-    
-
+    var cardDiv = $("<div class= 'row' >")
+    var foreCastContainer = $(".fore-cast-container");
     var days = [7, 15, 23, 31, 39]
       days.forEach(function(day){ 
       var foreCast = $("<h3>");
@@ -124,18 +119,14 @@ function makeRequestForecast(){
       var humidityDay= $("<h3>")
       humidityDay.text("Humidity: " + response2.list[day].main.humidity + " %")
       console.log("Humidity: " + response2.list[day].main.humidity + " %")
-
+ 
       var forecastDay = $("<div class = 'card forecast'>")
       forecastDay.append(foreCast, dateDay, tempDay, humidityDay)
-      var cardDiv = $("<div class= 'row' >")
+      
       cardDiv.append(forecastDay);
-      var foreCastContainer = $(".fore-cast-container");
       foreCastContainer.html(cardDiv)
+        
     });
-
-    
-
-    
   })
 }
 
