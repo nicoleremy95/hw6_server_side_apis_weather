@@ -15,10 +15,10 @@ function onPageLoad (){
 }
 onPageLoad(); 
 
-function makeRequestCurrent(){
-  var cityNameInput = $("#city-input").val().trim();
+function makeRequestCurrent(city){
+  //var cityNameInput = $("#city-input").val().trim();
 
-  var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityNameInput + "&appid=" + apiKey + "&units=imperial";
+  var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
   var weatherContainer = $(".weather-container");
   $.ajax({
     url: currentQueryURL,
@@ -26,11 +26,12 @@ function makeRequestCurrent(){
   }).then(function (response) {
     var cityDiv = $("<div>")
 
-    var now = moment();
-    console.log(now)
-    now.text
-    var nowDisplay = now.format("dddd MMM Mo YYYY");
-
+    // var now = moment();
+    // console.log(now)
+    
+    var nowDisplay = moment().format("dddd MM D YYYY");
+    console.log(nowDisplay);
+    
     var cityName = $("<h2>")
     cityName.text(response.name)
 
@@ -84,10 +85,9 @@ function makeRequestCurrent(){
     })
 };
 
-
-function makeRequestForecast(){
-  var cityNameInput = $("#city-input").val().trim();
-  var forecastQueryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`;
+function makeRequestForecast(city){
+  
+  var forecastQueryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
   
   $.ajax({
     url: forecastQueryURL,
@@ -107,9 +107,9 @@ function makeRequestForecast(){
       var iconUrlForecast = "http://openweathermap.org/img/w/" + iconCodeDay + ".png"
       iconImageDay.attr("src", iconUrlForecast)
       foreCast.append(iconImageDay)
-      
+      var justDate = response2.list[day].dt_txt.split(" ")
       var dateDay = $("<h3>")
-      dateDay.text(response2.list[day].dt_txt)
+      dateDay.text(justDate[0])
       console.log(response2.list[day].dt_txt)
 
       var tempDay = $("<h3>")
@@ -124,22 +124,21 @@ function makeRequestForecast(){
       forecastDay.append(foreCast, dateDay, tempDay, humidityDay)
       
       cardDiv.append(forecastDay);
-      foreCastContainer.html(cardDiv)
-        
+      foreCastContainer.html(cardDiv)   
     });
   })
 }
 
-function cityNames(){
-  var cityNameInput = $("#city-input").val().trim();
+function cityNames(city){
+  //var cityNameInput = $("#city-input").val().trim();
   
   //display city name 
   var newCityName = $("<button class='card city-list btn'>")
  
-  newCityName.text(cityNameInput)
+  newCityName.text(city)
   console.log(newCityName);
-  newCityName.attr("data-name", cityNameInput)
-  console.log("data-name", cityNameInput)
+  newCityName.attr("data-name", city)
+  console.log("data-name", city)
   newCity.prepend(newCityName)
   // console.log(newCityName)
 
@@ -161,9 +160,10 @@ function cityNames(){
 
 $(".searchBtn").click(function (event) {
   event.preventDefault();
-  makeRequestCurrent();
-  makeRequestForecast();
-  cityNames();
+  var cityNameInput = $("#city-input").val().trim();
+  makeRequestCurrent(cityNameInput);
+  makeRequestForecast(cityNameInput);
+  cityNames(cityNameInput);
   $("#city-input").val("");
 });
 
