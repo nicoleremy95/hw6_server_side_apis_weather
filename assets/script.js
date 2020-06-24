@@ -31,6 +31,8 @@ function makeRequestCurrent(){
     var cityDiv = $("<div>")
 
     var now = moment();
+    console.log(now)
+    now.text
     var nowDisplay = now.format("dddd MMM Mo YYYY");
 
     var cityName = $("<h2>")
@@ -266,10 +268,10 @@ $(".searchBtn").click(function (event) {
 
 // TODO: upon the click of a city, it displays the same information again
 //create the card city-list into buttons and add a data-nanme attr to each. Then use the $(.this) like an event target 
-$(document).on("click", ".city-list", makeRequestCurrent, makeRequestForecast)
+// $(document).on("click", ".city-list", makeRequestCurrent, makeRequestForecast)
 
 $(".city-list").click(function(){
-
-  makeRequestCurrent();
-  makeRequestForecast();
+  var cityNameInput = $(this).attr("data-name")
+  makeRequestCurrent(cityNameInput);
+  makeRequestForecast(cityNameInput);
 })
