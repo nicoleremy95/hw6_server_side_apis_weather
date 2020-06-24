@@ -92,139 +92,50 @@ function makeRequestCurrent(){
 function makeRequestForecast(){
   var cityNameInput = $("#city-input").val().trim();
   var forecastQueryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`;
-  var foreCastContainer = $(".fore-cast-container");
+  
   $.ajax({
     url: forecastQueryURL,
     method: "GET"
   }).then(function(response2){
     console.log(response2);
     
-    var cardDiv = $("<div class= 'row' >")
-
-    //day 1
-    var forecastDay1 = $("<div class = 'card forecast'>")
-
-    var foreCast1 = $("<h3>");
-    foreCast1.text("Forecast");
-
-    var iconImageDay1 = $("<img>")
-    var iconCodeDay1 = response2.list[7].weather[0].icon
-    console.log(iconCodeDay1)
-    var iconUrlForecast1 = "http://openweathermap.org/img/w/" + iconCodeDay1 + ".png"
-    iconImageDay1.attr("src", iconUrlForecast1)
-    foreCast1.append(iconImageDay1)
     
-    var dateDay1 = $("<h3>")
-    dateDay1.val(response2.list[7].dt_txt)
 
-    var tempDay1 = $("<h3>")
-    tempDay1.text("Temperature: " + response2.list[7].main.temp + " F")
+    var days = [7, 15, 23, 31, 39]
+      days.forEach(function(day){ 
+      var foreCast = $("<h3>");
+      foreCast.text("Forecast");
 
-    var humidityDay1= $("<h3>")
-    humidityDay1.text("Humidity: " + response2.list[7].main.humidity + " %")
+      var iconImageDay = $("<img>")
+      var iconCodeDay = response2.list[day].weather[0].icon
+      console.log(response2.list[day].weather[0].icon)
+      var iconUrlForecast = "http://openweathermap.org/img/w/" + iconCodeDay + ".png"
+      iconImageDay.attr("src", iconUrlForecast)
+      foreCast.append(iconImageDay)
+      
+      var dateDay = $("<h3>")
+      dateDay.text(response2.list[day].dt_txt)
+      console.log(response2.list[day].dt_txt)
 
-    forecastDay1.append(foreCast1, dateDay1, tempDay1, humidityDay1)
+      var tempDay = $("<h3>")
+      tempDay.text("Temperature: " + response2.list[day].main.temp + " F")
+      console.log("Temperature: " + response2.list[day].main.temp + " F")
 
-    //day 2
-    var forecastDay2 = $("<div class = 'card forecast'>")
+      var humidityDay= $("<h3>")
+      humidityDay.text("Humidity: " + response2.list[day].main.humidity + " %")
+      console.log("Humidity: " + response2.list[day].main.humidity + " %")
 
-    var foreCast2 = $("<h3>");
-    foreCast2.text("Forecast");
+      var forecastDay = $("<div class = 'card forecast'>")
+      forecastDay.append(foreCast, dateDay, tempDay, humidityDay)
+      var cardDiv = $("<div class= 'row' >")
+      cardDiv.append(forecastDay);
+      var foreCastContainer = $(".fore-cast-container");
+      foreCastContainer.html(cardDiv)
+    });
 
-    var iconImageDay2 = $("<img>")
-    var iconCodeDay2 = response2.list[15].weather[0].icon
-    var iconUrlForecast2 = "http://openweathermap.org/img/w/" + iconCodeDay2 + ".png"
-    iconImageDay2.attr("src", iconUrlForecast2)
-    foreCast2.append(iconImageDay2)
     
-    var dateDay2 = $("<h3>")
-    dateDay2.text(response2.list[15].dt_txt)
 
-    var tempDay2 = $("<h3>")
-    tempDay2.text("Temperature: " + response2.list[15].main.temp + " F")
-
-    var humidityDay2= $("<h3>")
-    humidityDay2.text("Humidity: " + response2.list[15].main.humidity + " %")
-
-    forecastDay2.append(foreCast2, dateDay2, tempDay2, humidityDay2)
-
-    //day 3
-    var forecastDay3 = $("<div class = 'card forecast'>")
-
-    var foreCast3 = $("<h3>");
-    foreCast3.text("Forecast");
-
-    var iconImageDay3 = $("<img>")
-    var iconCodeDay3 = response2.list[23].weather[0].icon
-    var iconUrlForecast3 = "http://openweathermap.org/img/w/" + iconCodeDay3 + ".png"
-    iconImageDay3.attr("src", iconUrlForecast3)
-    foreCast3.append(iconImageDay3)
     
-    var dateDay3 = $("<h3>")
-    dateDay3.text(response2.list[23].dt_txt)
-
-    var tempDay3 = $("<h3>")
-    tempDay3.text("Temperature: " + response2.list[23].main.temp + " F")
-
-    var humidityDay3= $("<h3>")
-    humidityDay3.text("Humidity: " + response2.list[23].main.humidity + " %")
-
-    forecastDay3.append(foreCast3, dateDay3, tempDay3, humidityDay3)
-
-    cardDiv.append(forecastDay1, forecastDay2, forecastDay3);
-
-    foreCastContainer.html(cardDiv)
-   
-    //day 4
-    var forecastDay4 = $("<div class = 'card forecast'>")
-
-    var foreCast4 = $("<h3>");
-    foreCast4.text("Forecast");
-
-    var iconImageDay4 = $("<img>")
-    var iconCodeDay4 = response2.list[31].weather[0].icon
-    var iconUrlForecast4 = "http://openweathermap.org/img/w/" + iconCodeDay4 + ".png"
-    iconImageDay4.attr("src", iconUrlForecast4)
-    foreCast4.append(iconImageDay4)
-    
-    var dateDay4 = $("<h3>")
-    dateDay4.text(response2.list[31].dt_txt)
-
-    var tempDay4 = $("<h3>")
-    tempDay4.text("Temperature: " + response2.list[31].main.temp + " F")
-
-    var humidityDay4= $("<h3>")
-    humidityDay4.text("Humidity: " + response2.list[31].main.humidity + " %")
-
-    forecastDay4.append(foreCast4, dateDay4, tempDay4, humidityDay4)
-
-    //day 5
-    var forecastDay5 = $("<div class = 'card forecast'>")
-
-    var foreCast5 = $("<h3>");
-    foreCast5.text("Forecast");
-
-    var iconImageDay5 = $("<img>")
-    var iconCodeDay5 = response2.list[39].weather[0].icon
-    var iconUrlForecast5 = "http://openweathermap.org/img/w/" + iconCodeDay5 + ".png"
-    iconImageDay5.attr("src", iconUrlForecast5)
-    foreCast5.append(iconImageDay5)
-    
-    var dateDay5 = $("<h3>")
-    dateDay5.text(response2.list[39].dt_txt)
-
-    var tempDay5 = $("<h3>")
-    tempDay5.text("Temperature: " + response2.list[39].main.temp + " F")
-
-    var humidityDay5= $("<h3>")
-    humidityDay5.text("Humidity: " + response2.list[39].main.humidity + " %")
-
-    forecastDay5.append(foreCast5, dateDay5, tempDay5, humidityDay5)
-
-
-    cardDiv.append(forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5);
-
-    foreCastContainer.html(cardDiv)
   })
 }
 
@@ -275,3 +186,151 @@ $(".city-list").click(function(){
   makeRequestCurrent(cityNameInput);
   makeRequestForecast(cityNameInput);
 })
+
+
+
+
+
+
+
+
+// function makeRequestForecast(){
+//   var cityNameInput = $("#city-input").val().trim();
+//   var forecastQueryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`;
+//   var foreCastContainer = $(".fore-cast-container");
+//   $.ajax({
+//     url: forecastQueryURL,
+//     method: "GET"
+//   }).then(function(response2){
+//     console.log(response2);
+    
+//     var cardDiv = $("<div class= 'row' >")
+
+    // //day 1
+    // var forecastDay1 = $("<div class = 'card forecast'>")
+
+    // var foreCast1 = $("<h3>");
+    // foreCast1.text("Forecast");
+
+    // var iconImageDay1 = $("<img>")
+    // var iconCodeDay1 = response2.list[7].weather[0].icon
+    // console.log(iconCodeDay1)
+    // var iconUrlForecast1 = "http://openweathermap.org/img/w/" + iconCodeDay1 + ".png"
+    // iconImageDay1.attr("src", iconUrlForecast1)
+    // foreCast1.append(iconImageDay1)
+    
+    // var dateDay1 = $("<h3>")
+    // dateDay1.text(response2.list[7].dt_txt)
+    // console.log(response2.list[7].dt_txt)
+
+    // var tempDay1 = $("<h3>")
+    // tempDay1.text("Temperature: " + response2.list[7].main.temp + " F")
+
+    // var humidityDay1= $("<h3>")
+    // humidityDay1.text("Humidity: " + response2.list[7].main.humidity + " %")
+
+    // forecastDay1.append(foreCast1, dateDay1, tempDay1, humidityDay1)
+
+    
+    // //day 2
+    // var forecastDay2 = $("<div class = 'card forecast'>")
+
+    // var foreCast2 = $("<h3>");
+    // foreCast2.text("Forecast");
+
+    // var iconImageDay2 = $("<img>")
+    // var iconCodeDay2 = response2.list[15].weather[0].icon
+    // var iconUrlForecast2 = "http://openweathermap.org/img/w/" + iconCodeDay2 + ".png"
+    // iconImageDay2.attr("src", iconUrlForecast2)
+    // foreCast2.append(iconImageDay2)
+    
+    // var dateDay2 = $("<h3>")
+    // dateDay2.text(response2.list[15].dt_txt)
+
+    // var tempDay2 = $("<h3>")
+    // tempDay2.text("Temperature: " + response2.list[15].main.temp + " F")
+
+    // var humidityDay2= $("<h3>")
+    // humidityDay2.text("Humidity: " + response2.list[15].main.humidity + " %")
+
+    // forecastDay2.append(foreCast2, dateDay2, tempDay2, humidityDay2)
+
+    // //day 3
+    // var forecastDay3 = $("<div class = 'card forecast'>")
+
+    // var foreCast3 = $("<h3>");
+    // foreCast3.text("Forecast");
+
+    // var iconImageDay3 = $("<img>")
+    // var iconCodeDay3 = response2.list[23].weather[0].icon
+    // var iconUrlForecast3 = "http://openweathermap.org/img/w/" + iconCodeDay3 + ".png"
+    // iconImageDay3.attr("src", iconUrlForecast3)
+    // foreCast3.append(iconImageDay3)
+    
+    // var dateDay3 = $("<h3>")
+    // dateDay3.text(response2.list[23].dt_txt)
+
+    // var tempDay3 = $("<h3>")
+    // tempDay3.text("Temperature: " + response2.list[23].main.temp + " F")
+
+    // var humidityDay3= $("<h3>")
+    // humidityDay3.text("Humidity: " + response2.list[23].main.humidity + " %")
+
+    // forecastDay3.append(foreCast3, dateDay3, tempDay3, humidityDay3)
+
+    // cardDiv.append(forecastDay1, forecastDay2, forecastDay3);
+
+    // foreCastContainer.html(cardDiv)
+   
+    // //day 4
+    // var forecastDay4 = $("<div class = 'card forecast'>")
+
+    // var foreCast4 = $("<h3>");
+    // foreCast4.text("Forecast");
+
+    // var iconImageDay4 = $("<img>")
+    // var iconCodeDay4 = response2.list[31].weather[0].icon
+    // var iconUrlForecast4 = "http://openweathermap.org/img/w/" + iconCodeDay4 + ".png"
+    // iconImageDay4.attr("src", iconUrlForecast4)
+    // foreCast4.append(iconImageDay4)
+    
+    // var dateDay4 = $("<h3>")
+    // dateDay4.text(response2.list[31].dt_txt)
+
+    // var tempDay4 = $("<h3>")
+    // tempDay4.text("Temperature: " + response2.list[31].main.temp + " F")
+
+    // var humidityDay4= $("<h3>")
+    // humidityDay4.text("Humidity: " + response2.list[31].main.humidity + " %")
+
+    // forecastDay4.append(foreCast4, dateDay4, tempDay4, humidityDay4)
+
+    // //day 5
+    // var forecastDay5 = $("<div class = 'card forecast'>")
+
+    // var foreCast5 = $("<h3>");
+    // foreCast5.text("Forecast");
+
+    // var iconImageDay5 = $("<img>")
+    // var iconCodeDay5 = response2.list[39].weather[0].icon
+    // var iconUrlForecast5 = "http://openweathermap.org/img/w/" + iconCodeDay5 + ".png"
+    // iconImageDay5.attr("src", iconUrlForecast5)
+    // foreCast5.append(iconImageDay5)
+    
+    // var dateDay5 = $("<h3>")
+    // dateDay5.text(response2.list[39].dt_txt)
+
+    // var tempDay5 = $("<h3>")
+    // tempDay5.text("Temperature: " + response2.list[39].main.temp + " F")
+
+    // var humidityDay5= $("<h3>")
+    // humidityDay5.text("Humidity: " + response2.list[39].main.humidity + " %")
+
+    // forecastDay5.append(foreCast5, dateDay5, tempDay5, humidityDay5)
+
+
+//     cardDiv.append(forecastDay);
+
+//     foreCastContainer.html(cardDiv)
+//   })
+// }
