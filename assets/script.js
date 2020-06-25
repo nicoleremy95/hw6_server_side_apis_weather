@@ -17,7 +17,7 @@ onPageLoad();
 
 //request the current conditions for the city 
 function makeRequestCurrent(city){
-  var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
+  var currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
   var weatherContainer = $(".weather-container");
   $.ajax({
     url: currentQueryURL,
@@ -33,7 +33,7 @@ function makeRequestCurrent(city){
 
     var iconImage = $("<img>")
     var iconCode = responseCurrent.weather[0].icon
-    var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
+    var iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png"
     iconImage.attr("src", iconUrl)
     cityName.append(iconImage)
 
@@ -48,7 +48,7 @@ function makeRequestCurrent(city){
 
     var lat = responseCurrent.coord.lat
     var lon = responseCurrent.coord.lon
-    var uvIndexURL= "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
+    var uvIndexURL= "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon
   
       $.ajax({
         url: uvIndexURL,
@@ -78,7 +78,7 @@ function makeRequestCurrent(city){
 
 //request the forecast data for the city 
 function makeRequestForecast(city){
-  var forecastQueryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+  var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
   
   $.ajax({
     url: forecastQueryURL,
@@ -95,7 +95,7 @@ function makeRequestForecast(city){
       var iconImageDay = $("<img>")
       var iconCodeDay = responseForecast.list[day].weather[0].icon
       console.log(responseForecast.list[day].weather[0].icon)
-      var iconUrlForecast = "http://openweathermap.org/img/w/" + iconCodeDay + ".png"
+      var iconUrlForecast = "https://openweathermap.org/img/w/" + iconCodeDay + ".png"
       iconImageDay.attr("src", iconUrlForecast)
       foreCast.append(iconImageDay)
       
