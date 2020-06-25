@@ -1,5 +1,5 @@
 # hw6_server_side_apis_weather
-server side APIs weather application 
+Server side APIs weather application 
 
 In this project, I have created a weather dashboard for cities across the world. Using third-party Open Weather Map API, users can enter a city and retreive current and future weather information on that particular city. Then, if the user clicks the newly created button of the city, the information is then displayed again. 
 
@@ -12,23 +12,23 @@ I used html, css, javascript, jquery, moment.js, and bootstrap to make this webs
 
 ### Step 1
 
-![step 1](images_readme/step1.png)
+![step 1]()
 
 ### Step 2
 
-![step 2](images_readme/step2.png)
+![step 2]()
 
 ### Step 3
 
-![step 3](images_readme/step3.png)
+![step 3]()
 
 ### Step 4
 
-![step 4](images_readme/step4.png)
+![step 4]()
 
 ## Link to Site
 
-Deployed website [Weather Dashboard](https://nicoleremy95.github.io/hw4_coding_assesment/)
+Deployed website [Weather Dashboard]()
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

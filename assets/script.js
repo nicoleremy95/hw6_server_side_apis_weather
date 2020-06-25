@@ -98,6 +98,7 @@ function makeRequestForecast(city){
       var iconUrlForecast = "http://openweathermap.org/img/w/" + iconCodeDay + ".png"
       iconImageDay.attr("src", iconUrlForecast)
       foreCast.append(iconImageDay)
+      
       var justDate = responseForecast.list[day].dt_txt.split(" ")
       var dateDay = $("<h3>")
       dateDay.text(justDate[0])
@@ -124,14 +125,14 @@ function makeRequestForecast(city){
 function cityNames(city){
   //display city name 
   var newCityName = $("<button class='card city-list btn'>")
- 
+  
   newCityName.text(city);
   newCityName.attr("data-name", city);
   newCity.prepend(newCityName);
 
   //create object with city names 
   var newCities = {
-    city: cityNameInput,
+    city: city,
   };
 
   //if there is a value in the array, then turnm into an object and get item
@@ -158,6 +159,7 @@ $(".searchBtn").click(function (event) {
 //on a click of any button with the class of city-list run these functions 
 $(".city-list").click(function(){
   var cityNameInput = $(this).attr("data-name");
+  console.log("hi")
   makeRequestCurrent(cityNameInput);
   makeRequestForecast(cityNameInput);
 })
