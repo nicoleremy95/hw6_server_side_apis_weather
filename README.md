@@ -12,23 +12,28 @@ I used html, css, javascript, jquery, moment.js, and bootstrap to make this webs
 
 ### Step 1
 
-![step 1]()
+![step 1](assets/images/step1.png)
 
 ### Step 2
 
-![step 2]()
+![step 2](assets/images/step2.png)
 
 ### Step 3
 
-![step 3]()
+![step 3](assets/images/step3.png)
 
 ### Step 4
 
-![step 4]()
+![step 4](assets/images/step4.png)
+
+### Step 5
+
+![step 5](assets/images/step5.png)
+
 
 ## Link to Site
 
-Deployed website [Weather Dashboard]()
+Deployed website [Weather Dashboard] (https://nicoleremy95.github.io/hw6_server_side_apis_weather/)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
